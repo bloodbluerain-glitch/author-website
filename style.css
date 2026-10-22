@@ -140,12 +140,12 @@ a:hover {
 }
 
 html.js-enabled .work-card.from-left {
-  opacity: 0;
+  opacity: 1;
   transform: translateX(-40px);
 }
 
 html.js-enabled .work-card.from-right {
-  opacity: 0;
+  opacity: 1;
   transform: translateX(40px);
 }
 
