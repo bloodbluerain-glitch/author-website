@@ -131,27 +131,32 @@ a:hover {
 
 /* 滾動進場：只作用於作品卡片 */
 
+/* 滾動進場：只有作品封面會滑入 */
+
 .work-card {
   opacity: 1;
   transform: none;
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
+  transition: none;
 }
 
-html.js-enabled .work-card.from-left {
-  opacity: 1;
-  transform: translateX(-40px);
+/* 卡片本身永遠不位移，只有封面動畫 */
+
+@keyframes cover-from-left {
+  from { transform: translateX(-36px); }
+  to   { transform: translateX(0); }
 }
 
-html.js-enabled .work-card.from-right {
-  opacity: 1;
-  transform: translateX(40px);
+@keyframes cover-from-right {
+  from { transform: translateX(36px); }
+  to   { transform: translateX(0); }
 }
 
-html.js-enabled .work-card.show {
-  opacity: 1;
-  transform: translateX(0);
+html.js-enabled .work-card.show.from-left .cover-placeholder {
+  animation: cover-from-left 0.7s ease-out both;
+}
+
+html.js-enabled .work-card.show.from-right .cover-placeholder {
+  animation: cover-from-right 0.7s ease-out both;
 }
 
 footer {
