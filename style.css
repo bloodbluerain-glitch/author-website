@@ -66,6 +66,60 @@ h2 {
   font-size: 1.35rem;
 }
 
+.welcome p {
+  margin-bottom: 0;
+}
+
+/* 作品卡片 */
+
+.work-card {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 26px;
+  align-items: center;
+  margin-top: 24px;
+  padding: 22px;
+  background: #fffdfb;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+}
+
+/* 暫時的封面位置，之後可換成真正封面 */
+
+.cover-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  color: var(--muted);
+  background: #eee5ed;
+  border: 1px dashed #cdbdcc;
+  border-radius: 8px;
+}
+
+.cover-placeholder span {
+  font-size: 0.9rem;
+  letter-spacing: 0.08em;
+}
+
+.work-info {
+  min-width: 0;
+}
+
+.work-info h3 {
+  margin: 0 0 12px;
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
+.work-info p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  line-height: 1.9;
+}
+
 a {
   color: var(--accent);
   text-decoration: none;
@@ -75,8 +129,29 @@ a:hover {
   text-decoration: underline;
 }
 
-li {
-  margin: 10px 0;
+/* 滾動進場：只作用於作品卡片 */
+
+.work-card {
+  opacity: 1;
+  transform: none;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+html.js-enabled .work-card.from-left {
+  opacity: 0;
+  transform: translateX(-40px);
+}
+
+html.js-enabled .work-card.from-right {
+  opacity: 0;
+  transform: translateX(40px);
+}
+
+html.js-enabled .work-card.show {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 footer {
@@ -85,6 +160,8 @@ footer {
   text-align: center;
   border-top: 1px solid var(--line);
 }
+
+/* 手機：封面在上，文字在下 */
 
 @media (max-width: 600px) {
   header {
@@ -98,48 +175,29 @@ footer {
   section {
     padding: 20px;
   }
+
+  .work-card {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 18px;
+  }
+
+  .cover-placeholder {
+    width: min(100%, 240px);
+    margin: 0 auto;
+  }
 }
 
+/* 尊重減少動態效果設定 */
 
-/* 滾動進場動畫 */
-
-
-/* 滾動進場動畫 */
-
-/* 作者標題固定正常顯示，不做動畫 */
-
-/* 預設讓作品正常顯示，避免 JavaScript 失效時整頁消失 */
-main section {
-  opacity: 1;
-  transform: none;
-  transition:
-    opacity 0.8s ease,
-    transform 0.8s ease;
-}
-
-/* 只有 JavaScript 正常啟動時，才準備進場動畫 */
-html.js-enabled main section {
-  opacity: 0;
-}
-
-html.js-enabled main section.from-left {
-  transform: translateX(-40px);
-}
-
-html.js-enabled main section.from-right {
-  transform: translateX(40px);
-}
-
-/* 滾動到區塊時，滑入並顯示 */
-html.js-enabled main section.show {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* 尊重減少動態效果的系統設定 */
 @media (prefers-reduced-motion: reduce) {
-  main section,
-  html.js-enabled main section {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .work-card,
+  html.js-enabled .work-card.from-left,
+  html.js-enabled .work-card.from-right {
     opacity: 1;
     transform: none;
     transition: none;
