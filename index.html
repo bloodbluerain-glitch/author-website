@@ -11,34 +11,59 @@
 <body>
   <header>
     <h1>血之蒼雨</h1>
-    <p>。</p>
+    <p>讓故事，找到自己的歸處。</p>
   </header>
 
   <main>
-    <section>
+    <section class="welcome">
       <h2>歡迎來到我的創作收藏室</h2>
       <p>這裡收藏小說、角色、故事，以及一路走來留下的創作痕跡。</p>
     </section>
 
-    <section>
+    <section class="works">
       <h2>代表作品</h2>
-      <ul>
-        <li>
-          <a href="https://www.kadokado.com.tw/book/60218">
-            《異契雇傭》
+
+      <article class="work-card">
+        <div class="cover-placeholder">
+          <span>作品封面</span>
+        </div>
+        <div class="work-info">
+          <h3>《異契雇傭》</h3>
+          <p>當命運將不同的靈魂交會，契約之外的牽絆也悄然成形。</p>
+          <a href="https://www.kadokado.com.tw/book/60218"
+             target="_blank" rel="noopener noreferrer">
+            前往作品頁 →
           </a>
-        </li>
-        <li>
-          <a href="https://www.popo.tw/books/867186">
-            《筆下有語》
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="cover-placeholder">
+          <span>作品封面</span>
+        </div>
+        <div class="work-info">
+          <h3>《筆下有語》</h3>
+          <p>文字不只是記錄，也藏著尚未說出口的心聲。</p>
+          <a href="https://www.popo.tw/books/867186"
+             target="_blank" rel="noopener noreferrer">
+            前往作品頁 →
           </a>
-        </li>
-        <li>
-          <a href="https://www.popo.tw/books/865133">
-            《失控的語言：末日降臨》
+        </div>
+      </article>
+
+      <article class="work-card">
+        <div class="cover-placeholder">
+          <span>作品封面</span>
+        </div>
+        <div class="work-info">
+          <h3>《失控的語言：末日降臨》</h3>
+          <p>當語言失去控制，世界也一步步走向崩壞。</p>
+          <a href="https://www.popo.tw/books/865133"
+             target="_blank" rel="noopener noreferrer">
+            前往作品頁 →
           </a>
-        </li>
-      </ul>
+        </div>
+      </article>
     </section>
   </main>
 
@@ -46,38 +71,34 @@
     <p>© 血之蒼雨｜個人創作網站</p>
   </footer>
 
+  <script>
+    const cards = document.querySelectorAll(".work-card");
 
-<script>
-  document.documentElement.classList.add("js-enabled");
-  const sections = document.querySelectorAll("main section");
+    if (
+      "IntersectionObserver" in window &&
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      document.documentElement.classList.add("js-enabled");
 
-  sections.forEach((section, index) => {
-    section.classList.add(
-      index % 2 === 0 ? "from-left" : "from-right"
-    );
-  });
-
-  if ("IntersectionObserver" in window) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
-        }
+      cards.forEach((card, index) => {
+        card.classList.add(
+          index % 2 === 0 ? "from-left" : "from-right"
+        );
       });
-    }, {
-      threshold: 0.15
-    });
 
-    sections.forEach((section) => observer.observe(section));
-  } else {
-    sections.forEach((section) => section.classList.add("show"));
-  }
-</script>
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      cards.forEach((card) => observer.observe(card));
+    }
+  </script>
 </body>
 </html>
-
-  
-</body>
-</html>
-
