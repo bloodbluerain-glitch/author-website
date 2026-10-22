@@ -103,58 +103,45 @@ footer {
 
 /* 滾動進場動畫 */
 
-/* 頁首標題：淡入 */
-header h1,
-header p {
-  opacity: 0;
-  animation: title-fade-in 1s ease forwards;
-}
 
-header p {
-  animation-delay: 0.25s;
-}
+/* 滾動進場動畫 */
 
-@keyframes title-fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
+/* 作者標題固定正常顯示，不做動畫 */
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* 作品區塊：從左右滑入 */
-section {
-  opacity: 0;
+/* 預設讓作品正常顯示，避免 JavaScript 失效時整頁消失 */
+main section {
+  opacity: 1;
+  transform: none;
   transition:
     opacity 0.8s ease,
     transform 0.8s ease;
 }
 
-section.from-left {
+/* 只有 JavaScript 正常啟動時，才準備進場動畫 */
+html.js-enabled main section {
+  opacity: 0;
+}
+
+html.js-enabled main section.from-left {
   transform: translateX(-40px);
 }
 
-section.from-right {
+html.js-enabled main section.from-right {
   transform: translateX(40px);
 }
 
-section.show {
+/* 滾動到區塊時，滑入並顯示 */
+html.js-enabled main section.show {
   opacity: 1;
   transform: translateX(0);
 }
 
-/* 尊重使用者的減少動態效果設定 */
+/* 尊重減少動態效果的系統設定 */
 @media (prefers-reduced-motion: reduce) {
-  header h1,
-  header p,
-  section {
+  main section,
+  html.js-enabled main section {
     opacity: 1;
-    animation: none;
-    transition: none;
     transform: none;
+    transition: none;
   }
 }
