@@ -45,5 +45,38 @@
   <footer>
     <p>© 血之蒼雨｜個人創作網站</p>
   </footer>
+
+
+<script>
+  const sections = document.querySelectorAll("main section");
+
+  sections.forEach((section, index) => {
+    section.classList.add(
+      index % 2 === 0 ? "from-left" : "from-right"
+    );
+  });
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.15
+    });
+
+    sections.forEach((section) => observer.observe(section));
+  } else {
+    sections.forEach((section) => section.classList.add("show"));
+  }
+</script>
 </body>
 </html>
+
+  
+</body>
+</html>
+
