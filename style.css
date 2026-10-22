@@ -99,3 +99,62 @@ footer {
     padding: 20px;
   }
 }
+
+
+/* 滾動進場動畫 */
+
+/* 頁首標題：淡入 */
+header h1,
+header p {
+  opacity: 0;
+  animation: title-fade-in 1s ease forwards;
+}
+
+header p {
+  animation-delay: 0.25s;
+}
+
+@keyframes title-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 作品區塊：從左右滑入 */
+section {
+  opacity: 0;
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+section.from-left {
+  transform: translateX(-40px);
+}
+
+section.from-right {
+  transform: translateX(40px);
+}
+
+section.show {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 尊重使用者的減少動態效果設定 */
+@media (prefers-reduced-motion: reduce) {
+  header h1,
+  header p,
+  section {
+    opacity: 1;
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
