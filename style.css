@@ -99,6 +99,15 @@ h2 {
   border-radius: 8px;
 }
 
+.cover-image {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+
 .cover-placeholder span {
   font-size: 0.9rem;
   letter-spacing: 0.08em;
