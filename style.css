@@ -102,8 +102,7 @@ h2 {
 .cover-image {
   display: block;
   width: 100%;
-  aspect-ratio: 3 / 4;
-  object-fit: cover;
+  height: auto;
   border-radius: 8px;
 }
 
