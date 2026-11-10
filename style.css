@@ -1,13 +1,23 @@
-
 /* 血之蒼雨｜個人創作網站 */
 
 :root {
-  --ink: #302b38;
-  --muted: #746b7c;
-  --paper: #b7e1e4;
-  --panel: #b7e1e4;
-  --accent: #79566f;
-  --line: #e8dfe5;
+  /* 文字 */
+  --ink: #46564B;
+  --muted: #69766C;
+
+  /* 網頁背景 */
+  --paper: #D5DED2;
+  --panel: #E8EEE5;
+
+  /* 主題色 */
+  --accent: #647D6B;
+  --name-title: #718779;
+  --header-bg: #A8B9A8;
+
+  /* 卡片與邊框 */
+  --card-bg: #F3F1E9;
+  --line: #C9D3C7;
+  --placeholder-bg: #DCE5DA;
 }
 
 * {
@@ -32,12 +42,13 @@ body {
 header {
   padding: 64px 24px;
   text-align: center;
-  background: #eee5ed;
+  background: var(--header-bg);
   border-bottom: 1px solid var(--line);
 }
 
 header h1 {
   margin: 0;
+  color: var(--name-title);
   font-size: clamp(2rem, 6vw, 3.5rem);
   letter-spacing: 0.12em;
 }
@@ -79,7 +90,7 @@ h2 {
   align-items: center;
   margin-top: 24px;
   padding: 22px;
-  background: #fffdfb;
+  background: var(--card-bg);
   border: 1px solid var(--line);
   border-radius: 14px;
 }
@@ -94,8 +105,8 @@ h2 {
   aspect-ratio: 3 / 4;
   overflow: hidden;
   color: var(--muted);
-  background: #eee5ed;
-  border: 1px dashed #cdbdcc;
+  background: var(--placeholder-bg);
+  border: 1px dashed var(--line);
   border-radius: 8px;
 }
 
@@ -106,7 +117,6 @@ h2 {
   height: auto;
   border-radius: 8px;
 }
-
 
 .cover-placeholder span {
   font-size: 0.9rem;
@@ -156,8 +166,6 @@ a {
 a:hover {
   text-decoration: underline;
 }
-
-/* 滾動進場：只作用於作品卡片 */
 
 /* 滾動進場：只有作品封面會滑入 */
 
