@@ -1,24 +1,35 @@
+
 /* 血之蒼雨｜個人創作網站 */
+
+/* ==============================
+   全站顏色設定
+============================== */
 
 :root {
   /* 文字 */
-  --ink: #46564B;
-  --muted: #69766C;
+  --ink: #302b38;
+  --muted: #746b7c;
 
-  /* 網頁背景 */
-  --paper: #D5DED2;
-  --panel: #E8EEE5;
+  /* 背景 */
+  --paper: #b7e1e4;
+  --panel: #b7e1e4;
+  --header-bg: #99d5d9;
 
   /* 主題色 */
-  --accent: #647D6B;
-  --name-title: #718779;
-  --header-bg: #A8B9A8;
+  --accent: #398f98;
+  --name-title: #5bb9c1;
 
   /* 卡片與邊框 */
-  --card-bg: #F3F1E9;
-  --line: #C9D3C7;
-  --placeholder-bg: #DCE5DA;
+  --card-bg: #fffdfb;
+  --line: #a9d2d5;
+  --placeholder-bg: #e0f0ef;
+  --placeholder-line: #b7d5d5;
 }
+
+
+/* ==============================
+   全站基本設定
+============================== */
 
 * {
   box-sizing: border-box;
@@ -39,6 +50,11 @@ body {
   line-height: 1.8;
 }
 
+
+/* ==============================
+   頁首
+============================== */
+
 header {
   padding: 64px 24px;
   text-align: center;
@@ -58,6 +74,11 @@ header p {
   color: var(--muted);
   letter-spacing: 0.08em;
 }
+
+
+/* ==============================
+   主要內容
+============================== */
 
 main {
   width: min(900px, calc(100% - 36px));
@@ -81,7 +102,10 @@ h2 {
   margin-bottom: 0;
 }
 
-/* 作品卡片 */
+
+/* ==============================
+   作品卡片
+============================== */
 
 .work-card {
   display: grid;
@@ -93,7 +117,17 @@ h2 {
   background: var(--card-bg);
   border: 1px solid var(--line);
   border-radius: 14px;
+
+  /* 卡片本身不移動 */
+  opacity: 1;
+  transform: none;
+  transition: none;
 }
+
+
+/* ==============================
+   作品封面
+============================== */
 
 /* 暫時的封面位置，之後可換成真正封面 */
 
@@ -106,7 +140,7 @@ h2 {
   overflow: hidden;
   color: var(--muted);
   background: var(--placeholder-bg);
-  border: 1px dashed var(--line);
+  border: 1px dashed var(--placeholder-line);
   border-radius: 8px;
 }
 
@@ -122,6 +156,11 @@ h2 {
   font-size: 0.9rem;
   letter-spacing: 0.08em;
 }
+
+
+/* ==============================
+   作品文字資訊
+============================== */
 
 .work-info {
   min-width: 0;
@@ -139,9 +178,18 @@ h2 {
   line-height: 1.9;
 }
 
+
+/* ==============================
+   超連結
+============================== */
+
 a {
   color: var(--accent);
   text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
 }
 
 .cover-link {
@@ -163,28 +211,30 @@ a {
   border-color: var(--accent);
 }
 
-a:hover {
-  text-decoration: underline;
-}
 
-/* 滾動進場：只有作品封面會滑入 */
-
-.work-card {
-  opacity: 1;
-  transform: none;
-  transition: none;
-}
-
-/* 卡片本身永遠不位移，只有封面動畫 */
+/* ==============================
+   封面滾動進場動畫
+   只有封面滑入，卡片本身不位移
+============================== */
 
 @keyframes cover-from-left {
-  from { transform: translateX(-36px); }
-  to   { transform: translateX(0); }
+  from {
+    transform: translateX(-36px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 @keyframes cover-from-right {
-  from { transform: translateX(36px); }
-  to   { transform: translateX(0); }
+  from {
+    transform: translateX(36px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
 }
 
 html.js-enabled .work-card.show.from-left .cover-placeholder {
@@ -195,6 +245,11 @@ html.js-enabled .work-card.show.from-right .cover-placeholder {
   animation: cover-from-right 0.7s ease-out both;
 }
 
+
+/* ==============================
+   頁尾
+============================== */
+
 footer {
   padding: 24px;
   color: var(--muted);
@@ -202,9 +257,14 @@ footer {
   border-top: 1px solid var(--line);
 }
 
-/* 手機：封面在上，文字在下 */
+
+/* ==============================
+   手機版響應式排版
+   封面在上，文字在下
+============================== */
 
 @media (max-width: 600px) {
+
   header {
     padding: 44px 18px;
   }
@@ -229,9 +289,13 @@ footer {
   }
 }
 
-/* 尊重減少動態效果設定 */
+
+/* ==============================
+   尊重減少動態效果設定
+============================== */
 
 @media (prefers-reduced-motion: reduce) {
+
   html {
     scroll-behavior: auto;
   }
